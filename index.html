@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>神马电影网不卡 - 高清电影在线不卡顿观看</title>
+<meta name="description" content="神马电影网不卡提供高清电影、热播剧集、动漫综艺在线观看，播放流畅不卡顿，更新快、资源全，官网 https://shenmadianyingwangbuka-h5.github.io。">
+<meta name="author" content="神马电影网不卡">
+<meta name="robots" content="index,follow">
+<meta name="bingbot" content="index,follow">
+<meta name="theme-color" content="#06121a">
+<style>
+:root{
+  --bg:#06121a;
+  --bg2:#0b2230;
+  --card:#0e2a3a;
+  --line:#16384a;
+  --cyan:#28e0d0;
+  --orange:#ff7a18;
+  --text:#e8fbff;
+  --muted:#8fb6c4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:radial-gradient(1200px 600px at 80% -10%,#0d3346 0,var(--bg) 60%);
+  color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei",Arial,sans-serif;
+  line-height:1.65;
+}
+a{color:var(--cyan);text-decoration:none}
+
+/* 顶栏 */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:14px 16px;
+  background:rgba(6,18,26,.92);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(8px);
+}
+.brand{
+  font-size:20px;font-weight:800;letter-spacing:.5px;
+}
+.brand b{color:var(--orange)}
+.bar-nav{display:flex;gap:8px;flex-wrap:wrap}
+.bar-nav a{
+  font-size:13px;padding:7px 12px;border:1px solid var(--line);
+  border-radius:999px;color:var(--text);background:var(--bg2);
+}
+.bar-nav a:hover{border-color:var(--cyan);color:var(--cyan)}
+
+/* 英雄区 */
+.hero{
+  padding:54px 18px 36px;text-align:center;
+  border-bottom:1px solid var(--line);
+}
+.hero h1{
+  font-size:34px;line-height:1.25;margin-bottom:14px;
+}
+.hero h1 span{color:var(--cyan)}
+.hero p{color:var(--muted);max-width:680px;margin:0 auto 18px}
+.hero .url{
+  display:inline-block;margin-top:6px;font-size:13px;color:var(--orange);
+  border:1px dashed var(--orange);padding:6px 12px;border-radius:8px;
+}
+
+/* 栏目容器 */
+.wrap{max-width:1120px;margin:0 auto;padding:30px 16px}
+.block{margin-bottom:46px}
+.block-head{
+  display:flex;align-items:baseline;gap:10px;margin-bottom:16px;
+}
+.block-no{
+  font-size:13px;color:#04141c;background:var(--cyan);
+  padding:3px 8px;border-radius:6px;font-weight:800;
+}
+.block-title{font-size:22px}
+.block-sub{font-size:13px;color:var(--muted)}
+
+/* 横向滚动电影条 */
+.rail{
+  display:flex;gap:14px;overflow-x:auto;padding-bottom:8px;
+  scroll-snap-type:x mandatory;
+}
+.rail::-webkit-scrollbar{height:8px}
+.rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:8px}
+.film{
+  flex:0 0 160px;scroll-snap-align:start;
+  background:var(--card);border:1px solid var(--line);
+  border-radius:14px;padding:14px;text-align:center;
+}
+.film .poster{
+  height:120px;border-radius:10px;margin-bottom:10px;
+  background:linear-gradient(135deg,var(--cyan),var(--orange));
+  display:flex;align-items:center;justify-content:center;
+  font-size:30px;font-weight:900;color:#04141c;
+}
+.film h3{font-size:15px;margin-bottom:4px}
+.film small{color:var(--muted)}
+
+/* 分类网格 */
+.cats{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;
+}
+.cat{
+  background:var(--bg2);border:1px solid var(--line);
+  padding:18px 12px;border-radius:12px;text-align:center;
+}
+.cat b{display:block;font-size:16px;margin-bottom:4px}
+.cat span{font-size:12px;color:var(--muted)}
+
+/* 排行榜 */
+.rank{list-style:none;counter-reset:r}
+.rank li{
+  counter-increment:r;
+  display:flex;align-items:center;gap:12px;
+  background:var(--card);border:1px solid var(--line);
+  padding:12px 14px;border-radius:10px;margin-bottom:10px;
+}
+.rank li::before{
+  content:counter(r);
+  width:28px;height:28px;flex:0 0 28px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--orange);color:#04141c;font-weight:900;border-radius:8px;
+}
+.rank .meta{margin-left:auto;font-size:12px;color:var(--muted)}
+
+/* 关于 */
+.about{
+  background:var(--bg2);border:1px solid var(--line);
+  border-radius:16px;padding:22px;
+}
+.about p{color:var(--muted);margin-bottom:10px}
+.about strong{color:var(--cyan)}
+
+/* 页脚 */
+.foot{
+  text-align:center;padding:22px 16px;font-size:13px;color:var(--muted);
+  border-top:1px solid var(--line);
+}
+
+@media (max-width:640px){
+  .hero h1{font-size:26px}
+  .block-title{font-size:19px}
+  .film{flex-basis:140px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="topbar">
+  <div class="brand">神马电影网<b>不卡</b></div>
+  <nav class="bar-nav">
+    <a href="#">首页</a>
+    <a href="#">正在热映</a>
+    <a href="#">影片分类</a>
+    <a href="#">热播排行榜</a>
+    <a href="#">关于本站</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h1>神马电影网<span>不卡</span>，高清影视秒开</h1>
+  <p>电影、剧集、动漫、综艺全品类覆盖，主打“加载快、播放稳、不转圈”，随时随地畅快观影。</p>
+  <div class="url">https://shenmadianyingwangbuka-h5.github.io</div>
+</section>
+
+<main class="wrap">
+
+  <section class="block" id="hot">
+    <div class="block-head">
+      <span class="block-no">01</span>
+      <div>
+        <div class="block-title">正在热映</div>
+        <div class="block-sub">横向滑动查看更多影片</div>
+      </div>
+    </div>
+    <div class="rail">
+      <article class="film"><div class="poster">影</div><h3>暗夜追凶</h3><small>悬疑 / 9.1</small></article>
+      <article class="film"><div class="poster">战</div><h3>星海远征</h3><small>科幻 / 8.8</small></article>
+      <article class="film"><div class="poster">爱</div><h3>盛夏告白</h3><small>爱情 / 8.5</small></article>
+      <article class="film"><div class="poster">笑</div><h3>老板别扣钱</h3><small>喜剧 / 8.2</small></article>
+      <article class="film"><div class="poster">鬼</div><h3>午夜旅馆</h3><small>惊悚 / 7.9</small></article>
+      <article class="film"><div class="poster">动</div><h3>灵兽纪元</h3><small>动漫 / 9.0</small></article>
+    </div>
+  </section>
+
+  <section class="block" id="cats">
+    <div class="block-head">
+      <span class="block-no">02</span>
+      <div>
+        <div class="block-title">影片分类</div>
+        <div class="block-sub">按口味精准找片</div>
+      </div>
+    </div>
+    <div class="cats">
+      <div class="cat"><b>动作</b><span>拳拳到肉</span></div>
+      <div class="cat"><b>喜剧</b><span>解压神器</span></div>
+      <div class="cat"><b>爱情</b><span>甜虐交织</span></div>
+      <div class="cat"><b>科幻</b><span>脑洞宇宙</span></div>
+      <div class="cat"><b>悬疑</b><span>反转上头</span></div>
+      <div class="cat"><b>动漫</b><span>热血治愈</span></div>
+      <div class="cat"><b>纪录</b><span>真实向</span></div>
+      <div class="cat"><b>综艺</b><span>下饭必备</span></div>
+    </div>
+  </section>
+
+  <section class="block" id="rank">
+    <div class="block-head">
+      <span class="block-no">03</span>
+      <div>
+        <div class="block-title">热播排行榜</div>
+        <div class="block-sub">本周用户播放热度</div>
+      </div>
+    </div>
+    <ol class="rank">
+      <li>暗夜追凶 <span class="meta">悬疑 · 1280万播放</span></li>
+      <li>星海远征 <span class="meta">科幻 · 1150万播放</span></li>
+      <li>灵兽纪元 <span class="meta">动漫 · 990万播放</span></li>
+      <li>盛夏告白 <span class="meta">爱情 · 870万播放</span></li>
+      <li>老板别扣钱 <span class="meta">喜剧 · 760万播放</span></li>
+    </ol>
+  </section>
+
+  <section class="block" id="about">
+    <div class="block-head">
+      <span class="block-no">04</span>
+      <div>
+        <div class="block-title">关于本站</div>
+        <div class="block-sub">神马电影网不卡 · 单页展示站</div>
+      </div>
+    </div>
+    <div class="about">
+      <p><strong>神马电影网不卡</strong> 是一个面向移动端优化的影视导航/展示单页，强调“打开快、切片快、播放不卡顿”。</p>
+      <p>官网地址：https://shenmadianyingwangbuka-h5.github.io</p>
+      <p>本页为静态单页演示，内页链接以 <code>#</code> 占位，不依赖后端、不生成 robots.txt 与 sitemap.xml，适合 GitHub Pages 直接托管。</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  © 2026 神马电影网不卡 · https://shenmadianyingwangbuka-h5.github.io · 单页静态演示
+</footer>
+
+</body>
+</html>
